@@ -1,6 +1,7 @@
+import { Link } from "react-router-dom"
 import styles from "./Home.module.css"
 
-export function Home({ setPagina }) {
+export function Home() {
   return (
     <main className={styles.home}>
       <section className={styles.hero}>
@@ -12,13 +13,13 @@ export function Home({ setPagina }) {
           </p>
 
           <div className={styles.botoes}>
-            <button onClick={() => setPagina("cadastro")}>
+            <Link to="/cadastro">
               Cadastrar Livro
-            </button>
+            </Link>
 
-            <button onClick={() => setPagina("livros")}>
+            <Link to="/livros">
               Verificar Livros
-            </button>
+            </Link>
           </div>
         </div>
       </section>
@@ -27,8 +28,7 @@ export function Home({ setPagina }) {
         <h2>Sobre o AcervoTech</h2>
 
         <p>
-          O AcervoTech é uma biblioteca digital criada para facilitar
-          o cadastro e a consulta de livros disponíveis no acervo.
+          Uma biblioteca digital para cadastro e consulta de livros.
         </p>
       </section>
     </main>
