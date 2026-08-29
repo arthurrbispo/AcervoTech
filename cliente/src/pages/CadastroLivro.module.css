@@ -1,0 +1,117 @@
+.cadastroLivro {
+  min-height: calc(100vh - 80px);
+  padding: 40px 20px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background-image: url("../assets/background-cadastro.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.cadastroContainer {
+  width: 100%;
+  max-width: 520px;
+
+  padding: 32px;
+
+  background-color: var(--cor-branca);
+  border-radius: 12px;
+
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.1);
+}
+
+.cadastroContainer h1 {
+  margin-bottom: 28px;
+
+  text-align: center;
+  color: var(--cor-primaria);
+
+  font-size: 30px;
+}
+
+.campo {
+  display: flex;
+  flex-direction: column;
+
+  margin-bottom: 18px;
+}
+
+.campo label {
+  margin-bottom: 6px;
+
+  color: var(--cor-texto);
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.campo input,
+.campo select {
+  width: 100%;
+  padding: 12px 14px;
+
+  border: 1px solid var(--cor-secundaria);
+  border-radius: 8px;
+
+  background-color: var(--cor-branca);
+  color: var(--cor-texto);
+
+  font-size: 16px;
+
+  outline: none;
+  transition: 0.2s;
+}
+
+.campo input:focus,
+.campo select:focus {
+  border-color: var(--cor-primaria);
+  box-shadow: 0 0 0 2px rgba(27, 47, 20, 0.15);
+}
+
+.campo input::placeholder {
+  color: #8a8a8a;
+}
+
+.botao {
+  width: 100%;
+
+  margin-top: 8px;
+  padding: 13px;
+
+  border: none;
+  border-radius: 8px;
+
+  background-color: var(--cor-button);
+  color: var(--cor-branca);
+
+  font-size: 16px;
+  font-weight: 600;
+
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.botao:hover {
+  background-color: var(--cor-destaque);
+}
+
+.botao:active {
+  transform: scale(0.98);
+}
+
+@media (max-width: 600px) {
+  .cadastroLivro {
+    padding: 20px 14px;
+  }
+
+  .cadastroContainer {
+    padding: 24px 18px;
+  }
+
+  .cadastroContainer h1 {
+    font-size: 24px;
+  }
+}
