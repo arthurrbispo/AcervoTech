@@ -1,6 +1,7 @@
 package school.sptech.AcervoTech;
 
 import org.springframework.http.ResponseEntity;
+import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
@@ -8,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.sql.PreparedStatement;
 import java.sql.Statement;
+import java.util.List;
 
 @CrossOrigin(origins = "http://localhost:5173")
 @RestController
@@ -64,5 +66,30 @@ public class LivroController {
         livro.setId(keyHolder.getKey().intValue());
 
         return ResponseEntity.status(201).body(livro);
+    }
+
+    @GetMapping
+    public ResponseEntity<List<Livro>> listarLivro() {
+        String sql = "SELECT * FROM livro";
+
+        List<Livro> livros = template.query(
+                sql,
+                new BeanPropertyRowMapper<>(Livro.class)
+        );
+
+        return ResponseEntity.status(201).body(livros);
+    }
+
+    @GetMapping("/categoria/{categoria}")
+    public ResponseEntity<List<Livro>> buscarPorCategoria(@PathVariable String categoria) {
+        String sql = "SELECT * FROM livro WHERE categoria = ?";
+
+        List<Livro> livros = template.query(
+                sql,
+                new BeanPropertyRowMapper<>(Livro.class),
+                categoria
+        );
+
+        return ResponseEntity.status(201).body(livros);
     }
 }
