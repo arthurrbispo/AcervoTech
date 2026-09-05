@@ -1,0 +1,13 @@
+@echo off
+
+echo Iniciando AcervoTech...
+
+echo Iniciando back-end...
+start cmd /k "cd api && mvn spring-boot:run"
+
+echo Instalando dependencias do front-end...
+cd cliente
+call npm install
+
+echo Iniciando front-end...
+npm run dev
