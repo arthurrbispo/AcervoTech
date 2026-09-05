@@ -3,5 +3,7 @@ CREATE TABLE livro (
     titulo VARCHAR(150) NOT NULL,
     autor VARCHAR(100) NOT NULL,
     categoria VARCHAR(50) NOT NULL,
+    ano_publicacao INT NOT NULL,
     quantidade INT NOT NULL
+
 );

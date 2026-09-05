@@ -31,20 +31,19 @@ public class LivroController {
                         livro.getAutor().isBlank() ||
                         livro.getCategoria() == null ||
                         livro.getCategoria().isBlank() ||
+                        livro.getAnoPublicacao() == null ||
+                        livro.getAnoPublicacao() <= 0 ||
                         livro.getQuantidade() == null ||
-                        livro.getQuantidade() < 0
+                        livro.getQuantidade() <= 0
         ) {
             return ResponseEntity.status(400).build();
         }
 
         String sql = """
-                INSERT INTO livro (
-                titulo,
-                autor,
-                categoria,
-                quantidade)
-                VALUES (?, ?, ?, ?)
-                """;
+            INSERT INTO livro
+            (titulo, autor, categoria, ano_publicacao, quantidade)
+            VALUES (?, ?, ?, ?, ?)
+            """;
 
         KeyHolder keyHolder = new GeneratedKeyHolder();
 
@@ -57,7 +56,8 @@ public class LivroController {
             statement.setString(1, livro.getTitulo());
             statement.setString(2, livro.getAutor());
             statement.setString(3, livro.getCategoria());
-            statement.setInt(4, livro.getQuantidade());
+            statement.setInt(4, livro.getAnoPublicacao());
+            statement.setInt(5, livro.getQuantidade());
 
             return statement;
 

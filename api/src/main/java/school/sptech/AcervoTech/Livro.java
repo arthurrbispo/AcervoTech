@@ -7,6 +7,7 @@ public class Livro {
     private String autor;
     private String categoria;
     private Integer quantidade;
+    private Integer anoPublicacao;
 
     public Integer getId() {
         return id;
@@ -46,5 +47,13 @@ public class Livro {
 
     public void setQuantidade(Integer quantidade) {
         this.quantidade = quantidade;
+    }
+
+    public Integer getAnoPublicacao() {
+        return anoPublicacao;
+    }
+
+    public void setAnoPublicacao(Integer anoPublicacao) {
+        this.anoPublicacao = anoPublicacao;
     }
 }

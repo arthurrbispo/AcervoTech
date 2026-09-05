@@ -115,3 +115,17 @@
     font-size: 24px;
   }
 }
+
+.sucesso {
+  margin-top: 16px;
+  color: #198754;
+  text-align: center;
+  font-weight: 600;
+}
+
+.erro {
+  margin-top: 16px;
+  color: #b02a37;
+  text-align: center;
+  font-weight: 600;
+}
