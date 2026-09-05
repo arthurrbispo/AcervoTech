@@ -42,11 +42,13 @@ O projeto possui scripts para facilitar a inicialização do front-end e do back
 
 Antes de executar, é necessário ter instalado:
 
+```
 Java
 Maven
 Node.js
 npm
 Linux
+```
 
 Na raiz do projeto, dê permissão de execução ao arquivo:
 
