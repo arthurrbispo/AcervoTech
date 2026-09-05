@@ -23,13 +23,14 @@ O sistema permite cadastrar livros, consultar os livros cadastrados e filtrar os
 
 ## Estrutura do projeto
 
-
+```
 ACERVOTECH/
 ├── api/
 ├── cliente/
 ├── start.bat
 ├── start.sh
 └── README.md
+```
 
 A pasta api contém o back-end desenvolvido com Spring Boot.
 
@@ -49,11 +50,15 @@ Linux
 
 Na raiz do projeto, dê permissão de execução ao arquivo:
 
+```
 chmod +x start.sh
+```
 
 Depois execute:
 
+```
 ./start.sh
+```
 
 O script irá iniciar o back-end e o front-end.
 
@@ -61,7 +66,9 @@ Windows
 
 Na raiz do projeto, execute:
 
+```
 start.bat
+```
 
 Também é possível executar o arquivo start.bat com dois cliques.
 
@@ -69,15 +76,22 @@ Endereços utilizados
 
 Back-end:
 
+```
 http://localhost:8080
+```
 
 Front-end:
 
+```
 http://localhost:5173
+```
 
 Após iniciar o projeto, abra no navegador:
 
+```
 http://localhost:5173
+
+```
 Funcionalidades
 
 O sistema possui:
@@ -92,26 +106,32 @@ Dados de um livro
 
 Cada livro possui:
 
+```
 Título
 Autor
 Categoria
 Ano de publicação
 Quantidade
+```
 
 O id é gerado automaticamente pelo banco de dados.
 
+```
 Endpoints da API
 Listar todos os livros
 GET /livros
+```
 
 Exemplo:
-
+```
 http://localhost:8080/livros
 Cadastrar um livro
 POST /livros
+```
 
 Exemplo de JSON:
 
+```
 {
   "titulo": "O Hobbit",
   "autor": "J. R. R. Tolkien",
@@ -119,9 +139,11 @@ Exemplo de JSON:
   "anoPublicacao": 1937,
   "quantidade": 3
 }
+```
 
 Resposta esperada:
 
+```
 {
   "id": 1,
   "titulo": "O Hobbit",
@@ -130,6 +152,8 @@ Resposta esperada:
   "anoPublicacao": 1937,
   "quantidade": 3
 }
+```
+
 Buscar livros por categoria
 GET /livros/categoria/{categoria}
 
@@ -140,9 +164,12 @@ Status HTTP utilizados
 
 A API utiliza os seguintes códigos:
 
+```
 200 OK
 201 Created
 400 Bad Request
+```
+
 Integração
 
 O front-end utiliza Axios para realizar requisições para a API.
