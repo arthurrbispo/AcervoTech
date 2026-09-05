@@ -155,11 +155,16 @@ Resposta esperada:
 ```
 
 Buscar livros por categoria
+
+```
 GET /livros/categoria/{categoria}
+```
 
 Exemplo:
-
+```
 http://localhost:8080/livros/categoria/Fantasia
+```
+
 Status HTTP utilizados
 
 A API utiliza os seguintes códigos:
