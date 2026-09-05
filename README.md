@@ -23,7 +23,7 @@ O sistema permite cadastrar livros, consultar os livros cadastrados e filtrar os
 
 ## Estrutura do projeto
 
-```text
+
 ACERVOTECH/
 ├── api/
 ├── cliente/
