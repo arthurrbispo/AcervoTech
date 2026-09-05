@@ -185,6 +185,3 @@ O front-end React executa normalmente na porta 5173.
 
 Para que o sistema funcione corretamente, os dois devem estar executando ao mesmo tempo.
 
-Autor
-
-Arthur Bispo
