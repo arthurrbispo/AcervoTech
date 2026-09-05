@@ -90,8 +90,8 @@ Após iniciar o projeto, abra no navegador:
 
 ```
 http://localhost:5173
-
 ```
+
 Funcionalidades
 
 O sistema possui:
