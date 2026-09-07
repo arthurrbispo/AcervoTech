@@ -11,7 +11,7 @@ import java.sql.PreparedStatement;
 import java.sql.Statement;
 import java.util.List;
 
-@CrossOrigin(origins = "http://localhost:5173")
+@CrossOrigin
 @RestController
 @RequestMapping("/livros")
 public class LivroController {
@@ -77,7 +77,7 @@ public class LivroController {
                 new BeanPropertyRowMapper<>(Livro.class)
         );
 
-        return ResponseEntity.status(201).body(livros);
+        return ResponseEntity.status(200).body(livros);
     }
 
     @GetMapping("/categoria/{categoria}")
@@ -90,6 +90,6 @@ public class LivroController {
                 categoria
         );
 
-        return ResponseEntity.status(201).body(livros);
+        return ResponseEntity.status(200).body(livros);
     }
 }

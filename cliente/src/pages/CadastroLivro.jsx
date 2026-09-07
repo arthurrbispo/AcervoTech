@@ -11,8 +11,11 @@ export function CadastroLivro() {
 
   const [mensagem, setMensagem] = useState("")
   const [erro, setErro] = useState("")
+  const [carregando, setCarregando] = useState(false)
 
   function cadastrarLivro() {
+    if (carregando) return
+
     const livro = {
       titulo,
       autor,
@@ -23,6 +26,7 @@ export function CadastroLivro() {
 
     setMensagem("")
     setErro("")
+    setCarregando(true)
 
     api
       .post("/livros", livro)
@@ -41,6 +45,9 @@ export function CadastroLivro() {
         console.error("Erro ao cadastrar livro:", erro)
 
         setErro("Não foi possível cadastrar o livro.")
+      })
+      .finally(() => {
+        setCarregando(false)
       })
   }
 
@@ -121,8 +128,10 @@ export function CadastroLivro() {
           type="button"
           className={styles.botao}
           onClick={cadastrarLivro}
+          disabled={carregando}
+          aria-busy={carregando}
         >
-          Cadastrar Livro
+          {carregando ? "Cadastrando..." : "Cadastrar Livro"}
         </button>
 
         {mensagem && (
