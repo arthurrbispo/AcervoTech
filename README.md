@@ -1,187 +1,132 @@
 # AcervoTech
 
-O AcervoTech é uma aplicação de biblioteca digital desenvolvida como Projeto Integrador entre as disciplinas de Front-end e Programação Web.
+Aplicação de biblioteca digital desenvolvida como Projeto Individual Integrador entre as disciplinas de **Front-end** e **Programação Web**, na SPTech.
 
-O sistema permite cadastrar livros, consultar os livros cadastrados e filtrar os livros por categoria.
+O sistema permite cadastrar livros, consultar o acervo e filtrar os registros por categoria. O front-end React consome uma API REST em Java com Spring Boot, que valida e armazena as informações em um banco relacional H2 utilizando JdbcTemplate.
 
-## Tecnologias utilizadas
+## Funcionalidades
 
-### Front-end
+- Cadastro com cinco campos: título, autor, categoria, ano de publicação e quantidade.
+- Listagem dos livros cadastrados.
+- Filtro por categoria.
+- Validação dos dados no back-end.
+- Tratamento de carregamento, sucesso e erro no front-end.
 
-- React
-- Vite
-- Axios
-- React Router DOM
-- CSS Modules
+## Tecnologias
 
-### Back-end
+| Front-end | Back-end |
+| --- | --- |
+| React e Vite | Java 21 e Spring Boot |
+| Axios | JdbcTemplate |
+| React Router DOM | H2 Database |
+| CSS Modules | Maven |
 
-- Java
-- Spring Boot
-- JdbcTemplate
-- H2 Database
+## Organização do repositório
 
-## Estrutura do projeto
+| Caminho | Conteúdo |
+| --- | --- |
+| `cliente/` | Aplicação React e arquivos CSS Modules. |
+| `api/` | API REST e configuração Maven. |
+| `api/src/main/resources/application.properties` | Configuração da aplicação. |
+| `api/src/main/resources/schema.sql` | Script de criação da tabela de livros. |
+| `docs/documentacao-api.pdf` | Documentação técnica completa. |
 
-```
-ACERVOTECH/
-├── api/
-├── cliente/
-├── start.bat
-├── start.sh
-└── README.md
-```
+## Pré-requisitos
 
-A pasta api contém o back-end desenvolvido com Spring Boot.
+Antes de executar, instale:
 
-A pasta cliente contém o front-end desenvolvido com React e Vite.
+- **JDK 21**, incluindo o compilador `javac`.
+- **Maven**.
+- **Node.js e npm**, em versão compatível com o Vite utilizado pelo projeto.
 
-Como executar o projeto
+Para conferir as instalações, execute no terminal:
 
-O projeto possui scripts para facilitar a inicialização do front-end e do back-end.
-
-Antes de executar, é necessário ter instalado:
-
-Java
-Maven
-Node.js
-npm
-Linux
-
-Na raiz do projeto, dê permissão de execução ao arquivo:
-
-```
-chmod +x start.sh
+```bash
+java -version
+javac -version
+mvn -version
+node -v
+npm -v
 ```
 
-Depois execute:
+## Como executar
 
-```
-./start.sh
-```
+Utilize **dois terminais separados**: um para a API e outro para o front-end. Os comandos abaixo partem da pasta raiz `AcervoTech`, que contém `api` e `cliente`.
 
-O script irá iniciar o back-end e o front-end.
+### 1. Abrir o projeto
 
-Windows
+1. Baixe ou clone o repositório.
+2. Abra a pasta `AcervoTech` no VS Code.
+3. Selecione **Terminal > Novo Terminal**.
+4. Confira se o terminal está na pasta raiz do projeto.
 
-Na raiz do projeto, execute:
+### 2. Iniciar a API
 
-```
-start.bat
-```
+No primeiro terminal, entre na pasta `api`, onde está o `pom.xml`:
 
-Também é possível executar o arquivo start.bat com dois cliques.
-
-Endereços utilizados
-
-Back-end:
-
-```
-http://localhost:8080
+```bash
+cd api
 ```
 
-Front-end:
+Inicie o back-end:
 
-```
-http://localhost:5173
-```
-
-Após iniciar o projeto, abra no navegador:
-
-```
-http://localhost:5173
+```bash
+mvn spring-boot:run
 ```
 
-Funcionalidades
+Aguarde a mensagem de inicialização de `AcervoTechApplication`. Na primeira execução, o Maven poderá baixar as dependências.
 
-O sistema possui:
+A API utiliza **http://localhost:8080**. Para consultar os livros, acesse [http://localhost:8080/livros](http://localhost:8080/livros). Sem cadastros, a resposta será `[]`.
 
-Cadastro de livros
-Consulta de livros cadastrados
-Filtro de livros por categoria
-Persistência dos dados no banco
-Integração entre o front-end e o back-end
-Validação dos dados enviados para a API
-Dados de um livro
+**Mantenha esse terminal aberto e a API em execução.**
 
-Cada livro possui:
+### 3. Iniciar o front-end
 
-```
-Título
-Autor
-Categoria
-Ano de publicação
-Quantidade
+Abra um **segundo terminal** em **Terminal > Novo Terminal**. Partindo da raiz `AcervoTech`, entre na pasta do cliente:
+
+```bash
+cd cliente
 ```
 
-O id é gerado automaticamente pelo banco de dados.
+> Se esse terminal abrir dentro de `api`, use `cd ../cliente`.
 
-```
-Endpoints da API
-Listar todos os livros
-GET /livros
-```
+Na primeira execução, instale as dependências:
 
-Exemplo:
-```
-http://localhost:8080/livros
-Cadastrar um livro
-POST /livros
+```bash
+npm install
 ```
 
-Exemplo de JSON:
+Depois, inicie o front-end:
 
-```
-{
-  "titulo": "O Hobbit",
-  "autor": "J. R. R. Tolkien",
-  "categoria": "Fantasia",
-  "anoPublicacao": 1937,
-  "quantidade": 3
-}
+```bash
+npm run dev
 ```
 
-Resposta esperada:
+Nas próximas execuções, basta executar `npm run dev` dentro de `cliente`. Repita `npm install` se as dependências forem alteradas ou se `node_modules` for removida.
 
-```
-{
-  "id": 1,
-  "titulo": "O Hobbit",
-  "autor": "J. R. R. Tolkien",
-  "categoria": "Fantasia",
-  "anoPublicacao": 1937,
-  "quantidade": 3
-}
-```
+### 4. Acessar a aplicação
 
-Buscar livros por categoria
+Abra o endereço informado pelo Vite no terminal, normalmente [http://localhost:5173](http://localhost:5173).
 
-```
-GET /livros/categoria/{categoria}
-```
+- Acesse **Cadastrar Livros** para registrar um livro.
+- Acesse **Verificar Livros** para consultar os registros e filtrar por categoria.
 
-Exemplo:
-```
-http://localhost:8080/livros/categoria/Fantasia
-```
+Os dois projetos devem permanecer em execução. Para encerrar, pressione **Ctrl + C** em cada terminal.
 
-Status HTTP utilizados
+## Integração e banco de dados
 
-A API utiliza os seguintes códigos:
+O Axios utiliza `http://localhost:8080` como URL base, configurada em `cliente/src/services/api.js`. O cliente envia os cadastros por **POST** e consulta os livros por **GET**. A API utiliza `@CrossOrigin` para permitir a comunicação entre as aplicações em origens diferentes.
 
-```
-200 OK
-201 Created
-400 Bad Request
-```
+O banco H2 é configurado automaticamente em memória, e a tabela é criada pelo arquivo `schema.sql`. Não é necessário instalar um servidor de banco separado para essa configuração.
 
-Integração
+**Os livros permanecem disponíveis somente enquanto a API está ligada. Ao encerrá-la e reiniciá-la, os cadastros são perdidos.** Atualizar apenas o navegador não apaga os dados.
 
-O front-end utiliza Axios para realizar requisições para a API.
+## Documentação técnica
 
-A API Spring Boot executa na porta 8080.
+Os endpoints, campos, regras de validação, códigos HTTP, exemplos de requisições e respostas e o roteiro de testes estão no documento abaixo:
 
-O front-end React executa normalmente na porta 5173.
+[Consultar a documentação técnica em PDF](docs/documentacao-api.pdf)
 
-Para que o sistema funcione corretamente, os dois devem estar executando ao mesmo tempo.
+## Autor
 
+Arthur Bispo dos Santos — SPTech, 2026.
