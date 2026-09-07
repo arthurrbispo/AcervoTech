@@ -27,12 +27,19 @@ public class LivroController {
         if (
                 livro.getTitulo() == null ||
                         livro.getTitulo().isBlank() ||
+                        livro.getTitulo().length() > 150 ||
+
                         livro.getAutor() == null ||
                         livro.getAutor().isBlank() ||
+                        livro.getAutor().length() > 100 ||
+
                         livro.getCategoria() == null ||
                         livro.getCategoria().isBlank() ||
+                        livro.getCategoria().length() > 50 ||
+
                         livro.getAnoPublicacao() == null ||
                         livro.getAnoPublicacao() <= 0 ||
+
                         livro.getQuantidade() == null ||
                         livro.getQuantidade() <= 0
         ) {
